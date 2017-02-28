@@ -1,0 +1,49 @@
+#sidebar {
+  background-color: rgba(8, 48, 78, 0.7);
+}
+#portaldetails {
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+}
+#portaldetails .title {
+  height: 4em;
+  padding: 0 0 0 4.2em;
+  width: auto;
+}
+#portaldetails .close {
+  top: 0;
+  right: 0;
+  padding: 0.2em;
+}
+#portaldetails .imgpreview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4em;
+  height: 4em;
+  background-size: cover;
+  background-position: left;
+}
+#portaldetails .mods {
+  display: flex;
+  justify-content: space-between;
+}
+#portaldetails .mods .container {
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0.5em;
+}
+#portaldetails .mods .mod {
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+#level {
+  font-size: 1.5em;
+  padding: 0 0.2em;
+  margin: 0;
+  text-align: left;
+  float: none;
+}

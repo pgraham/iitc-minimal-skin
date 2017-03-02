@@ -1,4 +1,5 @@
 node_modules/
+**/npm-debug.log
 
 build/target/iitc-skin-plugin.js
 build/target/skin.js

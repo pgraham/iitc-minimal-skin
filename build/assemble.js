@@ -15,22 +15,37 @@ console.log("Assembling plugin source...");
 readFile("src/js/plugWrap.js")
 .then((plugCtnt) => {
 
-	let replaceCss = readFile("build/target/skin.css")
-	.then(cssCtnt => {
-		plugCtnt = plugCtnt.replace("%%CSS_CONTENT%%", cssCtnt);
-	});
+	let jobs = [];
 
-	let replaceHooks = readDir("src/js/hooks")
-	.then(hooks => {
-		plugCtnt = plugCtnt.replace("%%HOOKS%%", hooks.join("\n"));
-	});
+	jobs.push(
+		readFile("build/target/skin.css")
+		.then(cssCtnt => {
+			plugCtnt = plugCtnt.replace("%%CSS_CONTENT%%", cssCtnt);
+		})
+	);
 
-	let embedImages = getEmbeddedImageStyles()
-	.then(embed => {
-		plugCtnt = plugCtnt.replace("%%IMG_EMBED%%", embed);
-	});
+	jobs.push(
+		readFile("src/js/helpers.js")
+		.then(helpers => {
+			plugCtnt = plugCtnt.replace("%%HELPERS%%", helpers);
+		})
+	);
 
-	return Promise.all([ replaceCss, replaceHooks, embedImages ])
+	jobs.push(
+		readDir("src/js/hooks")
+		.then(hooks => {
+			plugCtnt = plugCtnt.replace("%%HOOKS%%", hooks.join("\n"));
+		})
+	);
+
+	jobs.push(
+		getEmbeddedImageStyles()
+		.then(embed => {
+			plugCtnt = plugCtnt.replace("%%IMG_EMBED%%", embed);
+		})
+	);
+
+	return Promise.all(jobs)
 	.then(() => {
 		return writeFile("skin.js", plugCtnt);
 	});

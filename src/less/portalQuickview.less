@@ -1,0 +1,154 @@
+#portal-quickview {
+	position: absolute;
+	top: 0;
+	left: 25%;
+	width: 550px;
+	height: 3em;
+	z-index: 1000;
+
+	display: flex;
+
+	background-color: rgba(255, 237, 248, 0.7);
+	border-bottom-left-radius: 1em;
+	border-bottom-right-radius: 0.3em;
+
+	color: #444;
+
+	.level {
+		font-size: 2em;
+		padding: 0.25rem 0;
+
+		width: 1.5em;
+		text-align: center;
+	}
+
+	.identity {
+		flex-grow: 1;
+
+		display: flex;
+		flex-direction: column;
+		padding-top: 0.25rem;
+
+		.name, .owner {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding-right: 1em;
+		}
+
+		.owner {
+			font-weight: lighter;
+		}
+	}
+
+	.health {
+		position: relative;
+		width: 40%;
+
+		.resonators {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 20%;
+
+			display: flex;
+
+			.reso {
+				position: relative;
+				width: 12.5%;
+
+				.energy {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					background-color: #444;
+				}
+			}
+		}
+
+		.mods {
+			position: absolute;
+			top: 20%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: auto;
+			height: auto;
+
+			display: flex;
+			margin: 0;
+			padding: 0;
+
+			.mod {
+				box-sizing: border-box;
+				width: 25%;
+				height: 100%;
+
+				padding: 0.2em;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-origin: content-box;
+			}
+		}
+	}
+
+	.links {
+		position: relative;
+		width: 10%;
+
+		svg.out-links {
+			width: 100%;
+			height: 100%;
+
+			.octo {
+				stroke: #CCC;
+				stroke-width: 1px;
+				fill: none;
+			}
+
+			&.linkable .octo {
+				stroke: #72FAFF;
+				fill: #E0FDFF;
+			}
+
+			.link {
+				stroke: #E0FDFF;
+				fill: #CCC;
+
+				&.linked {
+					fill: #72FAFF;
+				}
+			}
+		}
+
+		.num-out {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			.divider {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.out {
+				position: absolute;
+				top: 25%;
+				left: 30%;
+			}
+
+			.of {
+				position: absolute;
+				bottom: 25%;
+				right: 30%;
+			}
+		}
+	}
+}

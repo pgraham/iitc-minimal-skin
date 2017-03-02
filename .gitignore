@@ -1,1 +1,5 @@
 node_modules/
+
+build/target/iitc-skin-plugin.js
+build/target/skin.js
+build/target/skin.css

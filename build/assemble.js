@@ -4,6 +4,8 @@
  */
 "use strict";
 
+const pkg = require("../package.json");
+
 const readFile = require("util/readFile");
 const writeFile = require("util/writeFile");
 const listDir = require("util/listDir");
@@ -14,6 +16,8 @@ const getEmbeddedImageStyles = require("assembly/getEmbeddedImageStyles");
 console.log("Assembling plugin source...");
 readFile("src/js/plugWrap.js")
 .then((plugCtnt) => {
+
+	plugCtnt = plugCtnt.replace("%%VERSION%%", pkg.version);
 
 	let jobs = [];
 

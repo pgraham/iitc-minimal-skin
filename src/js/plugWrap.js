@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         IITC skin
+// @name         %%NAME%%
 // @namespace    https://github.com/jonatkins/ingress-intel-total-conversion
 // @version      %%VERSION%%
 // @description  Nicer skin for IITC desktop

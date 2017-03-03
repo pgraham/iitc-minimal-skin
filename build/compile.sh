@@ -1,16 +1,7 @@
 #!/bin/sh
 
-if [ -d "build/target" ]; then
-  rm -r "build/target"
-fi
-
-mkdir build/target
-
-# Compile less file into CSS
-lessc "src/less/bundle.less" "build/target/skin.css"
-
-# Assemble compiled CSS into plugin file
-NODE_PATH=build ./build/assemble.js
+# Assemble the userscript file from sources.
+./build/assemble.sh
 
 # Package assembled file for import into Tampermonkey
-NODE_PATH=build ./build/package.js
+NODE_PATH=build/scripts ./build/scripts/prepare-for-import.js

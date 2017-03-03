@@ -4,7 +4,7 @@
  */
 "use strict";
 
-const pkg = require("../package.json");
+const pkg = require("../../package.json");
 
 const readFile = require("util/readFile");
 const writeFile = require("util/writeFile");
@@ -18,11 +18,12 @@ readFile("src/js/plugWrap.js")
 .then((plugCtnt) => {
 
 	plugCtnt = plugCtnt.replace("%%VERSION%%", pkg.version);
+	plugCtnt = plugCtnt.replace("%%NAME%%", pkg.name);
 
 	let jobs = [];
 
 	jobs.push(
-		readFile("build/target/skin.css")
+		readFile("build/target/bundle.css")
 		.then(cssCtnt => {
 			plugCtnt = plugCtnt.replace("%%CSS_CONTENT%%", cssCtnt);
 		})
@@ -51,13 +52,22 @@ readFile("src/js/plugWrap.js")
 
 	return Promise.all(jobs)
 	.then(() => {
-		return writeFile("skin.js", plugCtnt);
+		return writeFile(`${pkg.name}.userscript.js`, plugCtnt);
 	});
 })
 .then(() => {
-	console.log("Done.");
-	process.exit(0);
-}, function (err) {
+
+	// Output version and name for subsequent processing to utilize
+	return Promise.all([
+		writeFile("version", pkg.version),
+		writeFile("name", pkg.name)
+	])
+	.then(() => {
+		console.log("Done.");
+		process.exit(0);
+	});
+})
+.catch(err => {
 	console.error(err.message);
 	process.exit(1);
 });

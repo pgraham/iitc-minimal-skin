@@ -1,11 +1,12 @@
 {
-  "name": "iitc-skin",
+  "name": "iitc-minimal-skin-plugin",
   "version": "1.0.0",
   "description": "Minimal skin for IITC desktop",
   "main": "index.js",
   "scripts": {
     "test": "./build/run-tests.sh",
-    "build": "./build/compile.sh"
+    "build": "./build/compile.sh",
+    "release": "./build/release.sh"
   },
   "author": "Philip Graham <https://github.com/pgraham>",
   "license": "MIT",

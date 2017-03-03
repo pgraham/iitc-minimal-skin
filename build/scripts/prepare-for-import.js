@@ -7,10 +7,10 @@
 const readFile = require("util/readFile");
 const writeFile = require("util/writeFile");
 
-const info = require("../package.json");
+const info = require("../../package.json");
 
 console.log("Packing plugin for Tampermonkey import...");
-readFile("build/target/skin.js")
+readFile(`build/target/${info.name}.userscript.js`)
 .then((pluginCtnt) => {
 	let buf = Buffer.from(pluginCtnt);
 	let b64 = buf.toString("base64");
@@ -26,7 +26,7 @@ readFile("build/target/skin.js")
 		]
 	};
 
-	return writeFile("iitc-skin-plugin.js", JSON.stringify(plugin));
+	return writeFile(`${info.name}.js`, JSON.stringify(plugin));
 })
 .then(() => {
 	console.log("Done.");

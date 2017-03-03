@@ -36,6 +36,11 @@ window.plugin.minSkin = { hooks: [] };
 	}
 
 	function init() {
+		// This log statement has been left in the code intentionally since it can
+		// be used to open the script source from the console in order to add
+		// breakpoints.
+		console.log("Initializing minimal skin");
+
 		addStyle(getIITCSkinCss);
 		addStyle(getEmbeddedImageStyles);
 		installHooks();

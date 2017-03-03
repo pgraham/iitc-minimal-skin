@@ -1,4 +1,6 @@
 #portal-quickview {
+	@bg-colour: rgba(255, 237, 248, 0.7);
+
 	position: absolute;
 	top: 0;
 	left: 25%;
@@ -8,11 +10,34 @@
 
 	display: flex;
 
-	background-color: rgba(255, 237, 248, 0.7);
+	background-color: @bg-colour;
 	border-bottom-left-radius: 1em;
 	border-bottom-right-radius: 0.3em;
 
 	color: #444;
+
+	transition: transform 0.5s;
+	&.hide {
+		transform: translateY(-100%);
+	}
+
+	.close {
+		position: absolute;
+		top: 0;
+		left: -0.5em;
+		padding: 0.1em 0 0.5em 0.25em;
+		border-bottom-left-radius: 1em;
+
+		background-image: linear-gradient(
+			to right,
+			@bg-colour,
+			@bg-colour 0.5em,
+			transparent 0.5em,
+			transparent 100%
+		);
+		color: #AAA;
+		cursor: pointer;
+	}
 
 	.level {
 		font-size: 2em;

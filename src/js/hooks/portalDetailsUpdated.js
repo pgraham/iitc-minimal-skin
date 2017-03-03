@@ -110,7 +110,10 @@
 	function getPortalQuickview() {
 		var qv = $("#portal-quickview");
 		if (qv.length === 0) {
-			qv = $("<div/>").attr("id", "portal-quickview").appendTo('body');
+			qv = $("<div/>")
+				.attr("id", "portal-quickview")
+				.addClass("hide")
+				.appendTo('body');
 		}
 		return qv;
 	}
@@ -180,6 +183,15 @@
 						.append(s("of").text(maxLinks))
 				)
 				.appendTo(qv);
+
+			d("close")
+				.text("✕")
+				.click(function () { qv.addClass("hide"); })
+				.appendTo(qv);
+
+			setTimeout(function () {
+				qv.removeClass("hide");
+			});
 		}
 	});
 }());

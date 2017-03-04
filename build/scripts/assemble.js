@@ -52,7 +52,7 @@ readFile("src/js/plugWrap.js")
 
 	return Promise.all(jobs)
 	.then(() => {
-		return writeFile(`${pkg.name}.userscript.js`, plugCtnt);
+		return writeFile(`${pkg.name}.user.js`, plugCtnt);
 	});
 })
 .then(() => {

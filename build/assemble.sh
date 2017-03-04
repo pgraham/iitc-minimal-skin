@@ -6,7 +6,7 @@
 #  2. Insert CSS bundle, base64 encoded images and other Javascript sources into 
 #     the plugWrap.js template.
 #
-# The result is output to build/target/iitc-minimal-skin-plugin.userscript.js
+# The result is output to build/target/iitc-minimal-skin-plugin.user.js
 #
 
 if [ -d "build/target" ]; then

@@ -17,8 +17,8 @@ NAME=`cat build/target/name`
 VERSION=`cat build/target/version`
 
 echo " - Copying assembled userscript into distribution directory"
-cp build/target/${NAME}.userscript.js build/dist/${NAME}.userscript.js
-cp build/target/${NAME}.userscript.js build/dist/archive/${NAME}-${VERSION}.userscript.js
+cp build/target/${NAME}.user.js build/dist/${NAME}.user.js
+cp build/target/${NAME}.user.js build/dist/archive/${NAME}-${VERSION}.user.js
 
 # Add artifacts and commit
 # TODO Check for clean working state before allowing script to execute

@@ -10,7 +10,7 @@ const writeFile = require("util/writeFile");
 const info = require("../../package.json");
 
 console.log("Packing plugin for Tampermonkey import...");
-readFile(`build/target/${info.name}.userscript.js`)
+readFile(`build/target/${info.name}.user.js`)
 .then((pluginCtnt) => {
 	let buf = Buffer.from(pluginCtnt);
 	let b64 = buf.toString("base64");

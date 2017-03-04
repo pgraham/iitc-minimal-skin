@@ -3,6 +3,7 @@
 	var d = window.plugin.minSkin.helpers.d;
 	var s = window.plugin.minSkin.helpers.s;
 	var svg = window.plugin.minSkin.helpers.svg;
+	var match = window.plugin.minSkin.helpers.match;
 
 	var LINKS_BG = {};
 
@@ -82,7 +83,11 @@
 		info.lvl = data.portalDetails.level;
 		info.owner = {
 			name: data.portalDetails.owner,
-			team: data.portalDetails.team === "E" ? "enl" : "res"
+			team: match(data.portalDetails.team, {
+				"E": "enl",
+				"R": "res",
+				"N": "none"
+			}, "none")
 		};
 		info.reso = data.portalDetails.resonators
 			.map(function (r) {

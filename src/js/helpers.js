@@ -20,18 +20,42 @@
 
 	var h = {};
 
+	/**
+	 * Generic lookup
+	 */
+	h.match = function (value, values, def) {
+		if (values[value]) {
+			return values[value];
+		}
+		return def;
+	};
+
+	/**
+	 * Shorthand to create a jQuery object with a single className.
+	 */
 	h.el = function (type, className) {
 		return $("<" + type + "/>").addClass(className);
 	};
 
+	/**
+	 * Shorthand to create a <div/> element jQuery object with the given
+	 * className.
+	 */
 	h.d = function (className) {
 		return h.el("div", className);
 	};
 
+	/**
+	 * Shorthand to create a <span/> element jQuery object with the given
+	 * className.
+	 */
 	h.s = function (className) {
 		return h.el("span", className);
 	};
 
+	/**
+	 * Create a new <svg/> element with some shorthand functions attached.
+	 */
 	h.svg = function (viewBox, className) {
 		var el = createSvgEl("svg");
 		el.setAttribute("viewBox", viewBox);

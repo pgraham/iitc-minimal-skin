@@ -15,7 +15,10 @@ fi
 
 mkdir build/target
 
+echo " -- Assembling userscript --"
+
 # Compile less file into CSS
+echo "     - Compiling CSS bundle"
 lessc "src/less/bundle.less" "build/target/bundle.css"
 
 # Assemble compiled CSS into plugin file

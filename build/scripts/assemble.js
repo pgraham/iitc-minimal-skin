@@ -13,7 +13,7 @@ const readDir = require("util/readDir");
 
 const getEmbeddedImageStyles = require("assembly/getEmbeddedImageStyles");
 
-console.log("Assembling plugin source...");
+console.log("     - Populating iitc plugin wrapper with sources");
 readFile("src/js/plugWrap.js")
 .then((plugCtnt) => {
 
@@ -63,7 +63,6 @@ readFile("src/js/plugWrap.js")
 		writeFile("name", pkg.name)
 	])
 	.then(() => {
-		console.log("Done.");
 		process.exit(0);
 	});
 })

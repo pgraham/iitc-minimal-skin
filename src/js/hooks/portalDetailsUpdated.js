@@ -180,6 +180,7 @@
 
 			var maxLinks = getMaxOutgoingLinks(data.portalDetails);
 			d("links")
+				.addClass(p.reso.length === 8 ? "linkable" : "")
 				.append(buildLinksImg(p.links, p.reso.length))
 				.append(
 					d("num-out")

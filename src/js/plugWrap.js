@@ -11,7 +11,7 @@
 if (window.plugin === undefined) {
 	window.plugin = function () {};
 }
-window.plugin.minSkin = { hooks: [] };
+window.plugin.minSkin = { hooks: [], components: [] };
 
 %%HELPERS%%
 
@@ -35,15 +35,28 @@ window.plugin.minSkin = { hooks: [] };
 		});
 	}
 
+	function initComponents() {
+		let cmps = window.plugin.minSkin.components;
+
+		cmps.forEach(function (cmp) {
+			if (cmp.init) {
+				cmp.init();
+			}
+		});
+	}
+
 	function init() {
 		// This log statement has been left in the code intentionally since it can
 		// be used to open the script source from the console in order to add
 		// breakpoints.
 		console.log("Initializing minimal skin");
 
+		$("body").addClass("minimal-skin");
 		addStyle(getIITCSkinCss);
 		addStyle(getEmbeddedImageStyles);
 		installHooks();
+
+		initComponents();
 	}
 
 	init.info = { pluginId: "minimal-skin", dateTimeVersion: "0.1" };

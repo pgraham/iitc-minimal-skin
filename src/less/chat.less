@@ -1,0 +1,100 @@
+.minimal-skin {
+
+	.game-log {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		z-index: 1000;
+
+		display: flex;
+		flex-direction: column;
+
+		top: ~"calc(100% - 7.5em)";
+		transition: top 1s, transform 1s;
+
+		&.expanded {
+			top: 3em;
+		}
+
+		#chatcontrols .close-btn {
+			width: 2em;
+			transition: transform 0.2s, border 0.2s, background-color 0.2s;
+		}
+
+		&.closed {
+			transform: translateY(100%);
+
+			#chatcontrols .close-btn {
+				transform: translateY(-100%);
+
+				.bg-transparent(@bg-colour-primary, 0.4);
+				border-color: transparent;
+				border-top-right-radius: 0.2em;
+
+				transition:
+					transform 0.45s ease 0.55s,
+					border 0.45s ease 0.55s,
+					background-color 0.45s ease 0.55s;
+			}
+		}
+	}
+
+	#chatcontrols, #chat, #chatinput {
+		position: static;
+	}
+
+	#chatcontrols {
+		background: transparent;
+		bottom: auto;
+		left: auto;
+		z-index: auto;
+		height: auto;
+		padding: 0;
+
+		a {
+			.bg-colour-primary;
+			border-color: @accent;
+			border-style: solid;
+			border-width: 1px 1px 0 0;
+			margin-left: 0;
+			height: auto;
+			line-height: 1.75em;
+			color: @body-text--weak;
+			text-transform: capitalize;
+
+			&:last-child {
+				border-top-right-radius: 0.5em;
+			}
+
+			&.active {
+				color: @body-text--default;
+			}
+
+			&.active + a {
+				border-left-color: @accent;
+			}
+		}
+
+		a:hover {
+			text-decoration: none;
+			color: @body-text--default;
+		}
+	}
+
+	#chat, #chatinput {
+		.bg-colour-primary;
+		color: @body-text--default;
+		border-color: @accent;
+
+		width: 50em;
+	}
+
+	#chat {
+		height: 4em;
+		border-top-right-radius: 1em;
+		flex-grow: 1;
+	}
+
+	#chatinput {
+	}
+}

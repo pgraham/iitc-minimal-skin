@@ -1,5 +1,4 @@
 #portal-quickview {
-	@bg-colour: rgba(255, 237, 248, 0.7);
 
 	position: absolute;
 	top: 0;
@@ -10,11 +9,11 @@
 
 	display: flex;
 
-	background-color: @bg-colour;
+	.bg-colour-primary;
 	border-bottom-left-radius: 1em;
 	border-bottom-right-radius: 0.3em;
 
-	color: #444;
+	color: @body-text--default;
 
 	transition: transform 0.5s;
 	&.hide {
@@ -24,18 +23,18 @@
 	.close {
 		position: absolute;
 		top: 0;
-		left: -0.5em;
+		left: -0.7em;
 		padding: 0.1em 0 0.5em 0.25em;
 		border-bottom-left-radius: 1em;
 
 		background-image: linear-gradient(
 			to right,
-			@bg-colour,
-			@bg-colour 0.5em,
-			transparent 0.5em,
+			@bg-colour-primary-alpha,
+			@bg-colour-primary-alpha 0.7em,
+			transparent 0.7em,
 			transparent 100%
 		);
-		color: #AAA;
+		color: @body-text--weak;
 		cursor: pointer;
 	}
 
@@ -47,7 +46,7 @@
 		text-align: center;
 
 		&.none {
-			color: #FF7B23;
+			color: @uncaptured;
 		}
 	}
 
@@ -92,7 +91,6 @@
 					top: 0;
 					bottom: 0;
 					left: 0;
-					background-color: #444;
 				}
 			}
 		}
@@ -141,22 +139,28 @@
 			height: 100%;
 
 			.octo {
-				stroke: #CCC;
+				stroke: @accent;
 				stroke-width: 1px;
 				fill: none;
 			}
 
 			&.linkable .octo {
-				stroke: #72FAFF;
-				fill: #E0FDFF;
+				@linkable-fill: rgba(
+					red(@link--off),
+					green(@link--off),
+					blue(@link--off),
+					@bg-alpha-primary
+				);
+				stroke: @link--on;
+				fill: @linkable-fill;
 			}
 
 			.link {
-				stroke: #E0FDFF;
-				fill: #CCC;
+				stroke: @link--off;
+				fill: @accent;
 
 				&.linked {
-					fill: #72FAFF;
+					fill: @link--on;
 				}
 			}
 		}

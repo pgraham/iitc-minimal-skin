@@ -8,6 +8,7 @@
     "lint": "build/lint.sh",
     "compile": "build/compile.sh",
     "build": "npm run lint && npm run compile",
+    "watch": "build/watch.sh",
     "release": "build/release.sh"
   },
   "author": "Philip Graham <https://github.com/pgraham>",
@@ -15,6 +16,7 @@
   "devDependencies": {
     "clean-css-cli": "^4.0.8",
     "eslint": "^3.17.1",
-    "less": "^2.7.1"
+    "less": "^2.7.1",
+    "watch": "^1.0.2"
   }
 }

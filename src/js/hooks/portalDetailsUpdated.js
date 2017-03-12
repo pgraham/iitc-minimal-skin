@@ -1,4 +1,5 @@
 (function () {
+	"use strict";
 
 	var d = window.plugin.minSkin.helpers.d;
 	var s = window.plugin.minSkin.helpers.s;
@@ -95,7 +96,7 @@
 					lvl: r.level,
 					clr: COLORS_LVL[r.level],
 					nrg: r.energy / RESO_NRG[r.level] * 100
-				}
+				};
 			})
 			.sort(function (a, b) {
 				return b.lvl - a.lvl;
@@ -141,10 +142,7 @@
 	window.plugin.minSkin.hooks.push({
 		event: "portalDetailsUpdated",
 		handler: function (data) {
-			console.log(data);
-
 			var p = getPortalInfo(data);
-			console.log(p);
 
 			// Update portal quickview
 			var qv = getPortalQuickview();

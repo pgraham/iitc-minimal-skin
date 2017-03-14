@@ -1,5 +1,11 @@
 .minimal-skin {
 
+	&.portalquickview-open {
+		.game-log.expanded {
+			top: 3em;
+		}
+	}
+
 	.game-log {
 		position: absolute;
 		left: 0;
@@ -10,15 +16,15 @@
 		flex-direction: column;
 
 		top: ~"calc(100% - 7.5em)";
-		transition: top 1s, transform 1s;
+		transition: top 0.5s, transform 0.5s;
 
 		&.expanded {
-			top: 3em;
+			top: 0;
 		}
 
 		#chatcontrols .close-btn {
 			width: 2em;
-			transition: transform 0.2s, border 0.2s, background-color 0.2s;
+			transition: transform 0.1s, border 0.1s, background-color 0.1s;
 		}
 
 		&.closed {
@@ -32,9 +38,9 @@
 				border-top-right-radius: 0.2em;
 
 				transition:
-					transform 0.45s ease 0.55s,
-					border 0.45s ease 0.55s,
-					background-color 0.45s ease 0.55s;
+					transform 0.225s ease 0.275s,
+					border 0.225s ease 0.275s,
+					background-color 0.225s ease 0.275s;
 			}
 		}
 	}

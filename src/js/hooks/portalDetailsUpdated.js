@@ -190,10 +190,14 @@
 
 			d("close")
 				.text("✕")
-				.click(function () { qv.addClass("hide"); })
+				.click(function () {
+					$("body").removeClass("portalquickview-open");
+					qv.addClass("hide");
+				})
 				.appendTo(qv);
 
 			setTimeout(function () {
+				$("body").addClass("portalquickview-open");
 				qv.removeClass("hide");
 			});
 		}

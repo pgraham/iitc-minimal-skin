@@ -55,7 +55,6 @@ window.plugin.minSkin = { hooks: [], components: [] };
 		addStyle(getIITCSkinCss);
 		addStyle(getEmbeddedImageStyles);
 		installHooks();
-
 		initComponents();
 	}
 

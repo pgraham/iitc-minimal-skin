@@ -1,17 +1,35 @@
 /*
- * This file defines the colour palette used by the skin.
+ * This file defines the colour palette used by the skin as well as colour
+ * related design elements.
  */
 
 /*
- * Background colours. All elements have transparency applied to their
- * backgrounds so that the map is visible underneath.
+ * ---------------------------------------------------------------------------
+ *  Palette
+ * ---------------------------------------------------------------------------
+ */
+
+@light-pink: #FFEDF8;
+@orange: #FF7B23;
+@bright-blue: #72FAFF;
+@dull-blue: #E0FDFF;
+
+@mono-dark: #444;
+@mono-light: #AAA;
+@mono-lighter: #CCC;
+
+/*
+ * ---------------------------------------------------------------------------
+ *  Background colours. All elements have transparency applied to their
+ *  backgrounds so that the map is visible underneath.
+ * ---------------------------------------------------------------------------
  */
 
 /*
  * Primary background colour.
  * Use the `.bg-colour-primary` mixin to apply.
  */
-@bg-colour-primary: #FFEDF8;
+@bg-colour-primary: @light-pink;
 @bg-alpha-primary: 0.7;
 
 @bg-colour-primary-alpha: rgba(
@@ -25,23 +43,32 @@
 }
 
 /*
- * All text (that is not affliated with a faction) and accents (borders,
- * underlines, etc.) is drawn with a greyscale colour.
+ * ---------------------------------------------------------------------------
+ *  Text:
+ *  All text (that is not affliated with a faction) and accents (borders,
+ *  underlines, etc.) is drawn with a greyscale colour.
+ * ---------------------------------------------------------------------------
  */
-@mono-dark: #444;
-@mono-light: #AAA;
-@mono-lighter: #CCC;
 
 @body-text--default: @mono-dark;
 @body-text--weak: @mono-light;
 @accent: @mono-lighter;
 
 /*
- * Game element colours.
+ * ---------------------------------------------------------------------------
+ *  Game element colours.
+ * ---------------------------------------------------------------------------
  */
-@uncaptured: #FF7B23;
-@link--on: #72FAFF;
-@link--off: #E0FDFF;
+
+@uncaptured: @orange;
+@link--on: @bright-blue;
+@link--off: @dull-blue;
+
+/*
+ * ---------------------------------------------------------------------------
+ *  Misc.
+ * ---------------------------------------------------------------------------
+ */
 
 /*
  * Given a colour value and an alpha value, apply the appropriate

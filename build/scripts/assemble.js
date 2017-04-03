@@ -23,14 +23,14 @@ readFile("src/js/plugWrap.js")
 	let jobs = [];
 
 	jobs.push(
-		readFile("build/target/bundle.css")
+		readFile("build/target/work/bundle.css")
 		.then(cssCtnt => {
 			plugCtnt = plugCtnt.replace("%%CSS_CONTENT%%", cssCtnt);
 		})
 	);
 
 	jobs.push(
-		readFile("src/js/helpers.js")
+		readFile("build/target/work/helpers.js")
 		.then(helpers => {
 			plugCtnt = plugCtnt.replace("%%HELPERS%%", helpers);
 		})

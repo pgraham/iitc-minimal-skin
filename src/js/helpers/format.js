@@ -12,5 +12,10 @@ exports.distance = function (length) {
 }
 
 exports.percent = function (pct) {
-	return Math.floor(pct * 100) + "%";
+	pct = pct || 0;
+	if (pct < 0) {
+		pct = 0;
+	}
+
+	return pct === 0 ? "" : Math.floor(pct * 100) + "%";
 };

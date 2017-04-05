@@ -13,5 +13,9 @@ module.exports = {
 		"getMaxOutgoingLinks": false,
 		"COLORS_LVL": false,
 		"RESO_NRG": false
+	},
+	"rules": {
+		"semi": [ "error", "always", { "omitLastInOneLineBlock": true } ],
+		"indent": [ "error", "tab", { "SwitchCase": 1 } ]
 	}
 };

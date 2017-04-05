@@ -6,10 +6,10 @@
 
 exports.distance = function (length) {
 	if (length > 1000) {
-		return (length / 1000) + "km"
+		return (length / 1000) + "km";
 	}
-	return length + "m"
-}
+	return length + "m";
+};
 
 exports.percent = function (pct) {
 	pct = pct || 0;

@@ -5,7 +5,7 @@
 	 */
 	"use strict";
 
-	var PORTAL_STATUS_HELP = "Indicates portal levels/link lengths displayed.  Zoom in to display more."
+	var PORTAL_STATUS_HELP = "Indicates portal levels/link lengths displayed.  Zoom in to display more.";
 
 	var s = window.plugin.minSkin.helpers.s;
 	var svg = window.plugin.minSkin.helpers.svg;
@@ -86,7 +86,7 @@
 			window.renderUpdateStatus = function () {
 				clearTimeout(renderTimer);
 				renderTimer = setTimeout(render);
-			}
+			};
 		}
 	});
 

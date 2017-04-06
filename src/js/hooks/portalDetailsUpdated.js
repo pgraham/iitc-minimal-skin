@@ -4,7 +4,7 @@
  */
 "use strict";
 
-import format from "helpers/format";
+import format from "util/format";
 import svg from "util/dom/svg";
 import lookup from "util/lookup";
 import { d, s } from "util/dom/el";

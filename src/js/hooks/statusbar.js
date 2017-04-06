@@ -4,7 +4,7 @@
  */
 "use strict";
 import svg from "util/dom/svg";
-import { distance as fmtDist, percent as fmtPct } from "helpers/format";
+import { distance as fmtDist, percent as fmtPct } from "util/format";
 import { s } from "util/dom/el";
 
 var PORTAL_STATUS_HELP = "Indicates portal levels/link lengths displayed.  Zoom in to display more.";

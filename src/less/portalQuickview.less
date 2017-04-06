@@ -1,194 +1,236 @@
 #portal-quickview {
 
+	@quickview-height: 9em;
+	@collapsed-height: @quickview-height / 3;
+	@expanded-height: @collapsed-height * 2;
+
 	position: absolute;
 	top: 0;
 	left: 100px;
 	width: 550px;
-	height: 3em;
+	height: @collapsed-height;
 	z-index: 1000;
-
-	display: flex;
 
 	.bg-colour-primary;
 	border-bottom-left-radius: 1em;
-	border-bottom-right-radius: 1em;
+	border-bottom-right-radius: 0.4em;
 
 	color: @body-text--default;
 
-	transition: transform 0.5s;
+	transition: transform 0.5s, height 0.5s;
 	&.hide {
 		transform: translateY(-100%);
 	}
 
-	.close {
-		position: absolute;
-		top: 0;
-		left: -0.7em;
-		padding: 0.1em 0 0.5em 0.25em;
-		border-bottom-left-radius: 1em;
-
-		background-image: linear-gradient(
-			to right,
-			@bg-colour-primary-alpha,
-			@bg-colour-primary-alpha 0.7em,
-			transparent 0.7em,
-			transparent 100%
-		);
-		color: @body-text--weak;
-		cursor: pointer;
+	.expanded-info {
+		display: none;
+		height: @expanded-height;
 	}
 
-	.level {
-		font-size: 2em;
-		padding: 0.25rem 0;
+	&.expanded {
+		height: @quickview-height;
 
-		width: 7%;
-		text-align: center;
+		.collapsed-info {
+			.health {
+				width: 0;
+			}
 
-		&.none {
-			color: @uncaptured;
-		}
-	}
-
-	.identity {
-		width: 43%;
-		display: flex;
-		flex-direction: column;
-		padding-top: 0.25rem;
-
-		.name, .owner {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			padding-right: 1em;
-		}
-
-		.owner {
-			font-weight: lighter;
-		}
-	}
-
-	.health {
-		position: relative;
-		width: 40%;
-
-		.resonators {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 20%;
-
-			display: flex;
-
-			.reso {
-				position: relative;
-				width: 12.5%;
-
-				.energy {
-					position: absolute;
-					top: 0;
-					bottom: 0;
-					left: 0;
-				}
+			.details {
+				width: 40%;
 			}
 		}
 
-		.mods {
-			position: absolute;
-			top: 20%;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			width: auto;
-			height: auto;
-
-			display: flex;
-			margin: 0;
-			padding: 0;
-
-			.mod {
-				box-sizing: border-box;
-				width: 25%;
-				height: 100%;
-
-				padding: 0.2em;
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: contain;
-				background-origin: content-box;
-			}
-		}
-	}
-
-	.links {
-		position: relative;
-		width: 10%;
-
-		.num-out {
-			display: none;
-		}
-
-		&.linkable .num-out {
+		.expanded-info {
 			display: block;
 		}
+	}
 
-		svg.out-links {
-			width: 100%;
-			height: 100%;
+	.collapsed-info {
+		display: flex;
+		height: @collapsed-height;
 
-			.octo {
-				stroke: @accent;
-				stroke-width: 1px;
-				fill: none;
+		.level {
+			font-size: 2em;
+			padding: 0.25rem 0;
+
+			width: 7%;
+			text-align: center;
+
+			&.none {
+				color: @uncaptured;
+			}
+		}
+
+		.identity {
+			width: 43%;
+			display: flex;
+			flex-direction: column;
+			padding-top: 0.25rem;
+
+			.name, .owner {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				padding-right: 1em;
 			}
 
-			&.linkable .octo {
-				@linkable-fill: rgba(
-					red(@link--off),
-					green(@link--off),
-					blue(@link--off),
-					@bg-alpha-primary
-				);
-				stroke: @link--on;
-				fill: @linkable-fill;
+			.owner {
+				font-weight: lighter;
+			}
+		}
+
+		.details {
+			width: 0;
+			transition: width 0.5s;
+		}
+
+		.health {
+			position: relative;
+			width: 40%;
+			transition: width 0.5s;
+
+			.resonators {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 20%;
+
+				display: flex;
+
+				.reso {
+					position: relative;
+					width: 12.5%;
+
+					.energy {
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						left: 0;
+					}
+				}
 			}
 
-			.link {
-				stroke: @link--off;
-				fill: @accent;
+			.mods {
+				position: absolute;
+				top: 20%;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: auto;
+				height: auto;
 
-				&.linked {
-					fill: @link--on;
+				display: flex;
+				margin: 0;
+				padding: 0;
+
+				.mod {
+					box-sizing: border-box;
+					width: 25%;
+					height: 100%;
+
+					padding: 0.2em;
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+					background-origin: content-box;
 				}
 			}
 		}
 
-		.num-out {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
+		.links {
+			position: relative;
+			width: 10%;
 
-			.divider {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+			.num-out {
+				display: none;
 			}
 
-			.out {
-				position: absolute;
-				top: 25%;
-				left: 30%;
+			&.linkable .num-out {
+				display: block;
 			}
 
-			.of {
-				position: absolute;
-				bottom: 25%;
-				right: 30%;
+			svg.out-links {
+				width: 100%;
+				height: 100%;
+
+				.octo {
+					stroke: @accent;
+					stroke-width: 1px;
+					fill: none;
+				}
+
+				&.linkable .octo {
+					@linkable-fill: rgba(
+						red(@link--off),
+						green(@link--off),
+						blue(@link--off),
+						@bg-alpha-primary
+					);
+					stroke: @link--on;
+					fill: @linkable-fill;
+				}
+
+				.link {
+					stroke: @link--off;
+					fill: @accent;
+
+					&.linked {
+						fill: @link--on;
+					}
+				}
 			}
+
+			.num-out {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+
+				.divider {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+
+				.out {
+					position: absolute;
+					top: 25%;
+					left: 30%;
+				}
+
+				.of {
+					position: absolute;
+					bottom: 25%;
+					right: 30%;
+				}
+			}
+		}
+	}
+
+	.expanded-info {
+
+	}
+	
+	.actions {
+		position: absolute;
+		top: 0;
+		right: -1.5em;
+
+		padding: 0.1em 0.25em;
+		border-bottom-right-radius: 1em;
+
+		color: @body-text--weak;
+		.bg-colour-primary;
+
+		.close, .expand {
+			cursor: pointer;
+		}
+
+		.close {
+			margin-bottom: 0.1em;
 		}
 	}
 }

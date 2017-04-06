@@ -119,7 +119,33 @@
 			qv = $("<div/>")
 				.attr("id", "portal-quickview")
 				.addClass("hide")
+				.append($("<div/>").addClass("collapsed-info"))
+				.append($("<div/>").addClass("expanded-info"))
 				.appendTo('body');
+
+			var actions = d("actions").appendTo(qv);
+			d("close")
+				.text("✕")
+				.click(function () {
+					$("body").removeClass("portalquickview-open portalquickview-expanded");
+					qv.addClass("hide");
+				})
+				.appendTo(actions);
+
+			d("expand")
+				.text("▼")
+				.click(function () {
+					if (qv.is(".expanded")) {
+						$("body").removeClass("portalquickview-expanded");
+						qv.removeClass("expanded");
+						$(this).text("▼");
+					} else {
+						$("body").addClass("portalquickview-expanded");
+						qv.addClass("expanded");
+						$(this).text("▲");
+					}
+				})
+				.appendTo(actions);
 		}
 		return qv;
 	}
@@ -145,7 +171,8 @@
 			var p = getPortalInfo(data);
 
 			// Update portal quickview
-			var qv = getPortalQuickview();
+			var container = getPortalQuickview();
+			var qv = container.find(".collapsed-info");
 
 			qv.empty();
 			d("level").addClass(p.owner.team).text(p.lvl).appendTo(qv);
@@ -156,6 +183,9 @@
 						.addClass(p.owner.team)
 						.text(p.owner.name)
 				)
+				.appendTo(qv);
+
+			d("details")
 				.appendTo(qv);
 
 			var resos = d("resonators")
@@ -188,17 +218,9 @@
 				)
 				.appendTo(qv);
 
-			d("close")
-				.text("✕")
-				.click(function () {
-					$("body").removeClass("portalquickview-open");
-					qv.addClass("hide");
-				})
-				.appendTo(qv);
-
 			setTimeout(function () {
 				$("body").addClass("portalquickview-open");
-				qv.removeClass("hide");
+				container.removeClass("hide");
 			});
 		}
 	});

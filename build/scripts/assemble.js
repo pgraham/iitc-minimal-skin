@@ -37,9 +37,9 @@ readFile("src/js/plugWrap.js")
 	);
 
 	jobs.push(
-		readDir("src/js/hooks")
+		readFile("build/target/work/hooks.js")
 		.then(hooks => {
-			plugCtnt = plugCtnt.replace("%%HOOKS%%", hooks.join("\n"));
+			plugCtnt = plugCtnt.replace("%%HOOKS%%", hooks);
 		})
 	);
 

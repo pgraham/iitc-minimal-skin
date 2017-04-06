@@ -23,6 +23,7 @@ lessc "src/less/bundle.less" | cleancss > build/target/work/bundle.css
 
 # Bundle Javascripts
 NODE_PATH=src/js browserify src/js/helpers.js > build/target/work/helpers.js
+NODE_PATH=src/js browserify src/js/hooks/*.js > build/target/work/hooks.js
 
 # Assemble compiled CSS into plugin file
 NODE_PATH=build/scripts ./build/scripts/assemble.js

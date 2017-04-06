@@ -10,7 +10,6 @@ module.exports = {
 		"map": false,
 		"getDataZoomForMapZoom": false,
 		"getMapZoomTileParameters": false,
-		"getMaxOutgoingLinks": false,
 		"COLORS_LVL": false,
 		"RESO_NRG": false
 	},

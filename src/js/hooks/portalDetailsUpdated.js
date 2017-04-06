@@ -109,6 +109,7 @@
 			return [ m.rarity, m.name ].join(" ").toLowerCase().replace(/[\s_]+/g, "-");
 		});
 		info.links = window.getPortalLinks(data.guid).out.length;
+		info.maxLinks = window.getMaxOutgoingLinks(data.portalDetails);
 
 		return info;
 	}
@@ -172,51 +173,8 @@
 
 			// Update portal quickview
 			var container = getPortalQuickview();
-			var qv = container.find(".collapsed-info");
 
-			qv.empty();
-			d("level").addClass(p.owner.team).text(p.lvl).appendTo(qv);
-			d("identity")
-				.append(d("name").text(p.name))
-				.append(
-					d("owner")
-						.addClass(p.owner.team)
-						.text(p.owner.name)
-				)
-				.appendTo(qv);
-
-			d("details")
-				.appendTo(qv);
-
-			var resos = d("resonators")
-				.append(p.reso.map(function (r) {
-					return d("reso").append(
-						s("energy")
-							.width(r.nrg + "%")
-							.css("background-color", r.clr)
-					);
-				}));
-
-			var mods = d("mods").append(p.mods.map(function (m) {
-				return d("mod").addClass(m);
-			}));
-
-			d("health")
-				.append(resos)
-				.append(mods)
-				.appendTo(qv);
-
-			var maxLinks = getMaxOutgoingLinks(data.portalDetails);
-			d("links")
-				.addClass(p.reso.length === 8 ? "linkable" : "")
-				.append(buildLinksImg(p.links, p.reso.length))
-				.append(
-					d("num-out")
-						.append(s("out").text(p.links))
-						.append(s("divider").text("/"))
-						.append(s("of").text(maxLinks))
-				)
-				.appendTo(qv);
+			populateCollapsedView(p, container.find(".collapsed-info"));
 
 			setTimeout(function () {
 				$("body").addClass("portalquickview-open");
@@ -224,4 +182,49 @@
 			});
 		}
 	});
+
+	function populateCollapsedView(p, qv) {
+		qv.empty();
+		d("level").addClass(p.owner.team).text(p.lvl).appendTo(qv);
+		d("identity")
+			.append(d("name").text(p.name))
+			.append(
+				d("owner")
+					.addClass(p.owner.team)
+					.text(p.owner.name)
+			)
+			.appendTo(qv);
+
+		d("details")
+			.appendTo(qv);
+
+		var resos = d("resonators")
+			.append(p.reso.map(function (r) {
+				return d("reso").append(
+					s("energy")
+						.width(r.nrg + "%")
+						.css("background-color", r.clr)
+				);
+			}));
+
+		var mods = d("mods").append(p.mods.map(function (m) {
+			return d("mod").addClass(m);
+		}));
+
+		d("health")
+			.append(resos)
+			.append(mods)
+			.appendTo(qv);
+
+		d("links")
+			.addClass(p.reso.length === 8 ? "linkable" : "")
+			.append(buildLinksImg(p.links, p.reso.length))
+			.append(
+				d("num-out")
+					.append(s("out").text(p.links))
+					.append(s("divider").text("/"))
+					.append(s("of").text(p.maxLinks))
+			)
+			.appendTo(qv);
+	}
 }());

@@ -1,8 +1,8 @@
 #portal-quickview {
 
-	@quickview-height: 9em;
-	@collapsed-height: @quickview-height / 3;
-	@expanded-height: @collapsed-height * 2;
+	@collapsed-height: 3em;
+	@expanded-height: 8em;
+	@quickview-height: @collapsed-height + @expanded-height;
 
 	position: absolute;
 	top: 0;
@@ -41,7 +41,7 @@
 		}
 
 		.expanded-info {
-			display: block;
+			display: flex;
 		}
 	}
 
@@ -211,7 +211,44 @@
 	}
 
 	.expanded-info {
+		.resonators {
+			box-sizing: border-box;
+			width: 50%;
+			padding-left: 1em;
+			padding-bottom: 1em;
 
+			.reso {
+				height: 100% / 8;
+
+				.energy {
+					display: inline-block;
+					width: 25%;
+					height: 100%;
+					border-right: @border-primary--default;
+
+					.level {
+						display: inline-block;
+						height: 100%;
+					}
+				}
+
+				.owner {
+					display: inline-block;
+					height: 100%;
+					vertical-align: top;
+
+					font-size: 0.8em;
+					padding-left: 1em;
+				}
+			}
+		}
+
+		.mods {
+			width: 50%;
+			margin: 0;
+			height: auto;
+			text-align: left;
+		}
 	}
 	
 	.actions {

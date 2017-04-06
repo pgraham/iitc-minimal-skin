@@ -1,5 +1,7 @@
 #portal-quickview {
 
+	div { box-sizing: border-box; }
+
 	@collapsed-height: 3em;
 	@expanded-height: 8em;
 	@quickview-height: @collapsed-height + @expanded-height;
@@ -22,9 +24,17 @@
 		transform: translateY(-100%);
 	}
 
+	.collapsed-info, .expanded-info {
+		> div {
+			overflow: hidden;
+		}
+	}
+
 	.expanded-info {
-		display: none;
-		height: @expanded-height;
+		display: flex;
+		height: 0;
+		transition: height 0.5s;
+		overflow: hidden;
 	}
 
 	&.expanded {
@@ -41,7 +51,7 @@
 		}
 
 		.expanded-info {
-			display: flex;
+			height: @expanded-height;
 		}
 	}
 
@@ -211,11 +221,11 @@
 	}
 
 	.expanded-info {
+		padding: 0 1em 0.5em;
+
 		.resonators {
 			box-sizing: border-box;
-			width: 50%;
-			padding-left: 1em;
-			padding-bottom: 1em;
+			width: 33%;
 
 			.reso {
 				height: 100% / 8;
@@ -244,10 +254,41 @@
 		}
 
 		.mods {
-			width: 50%;
+			width: 33%;
 			margin: 0;
 			height: auto;
 			text-align: left;
+
+			.mod {
+				height: 25%;
+				display: flex;
+				align-items: center;
+				padding-left: 3em;
+
+				background-repeat: no-repeat;
+				background-size: contain;
+
+				.owner {
+					cursor: default;
+					background: none;
+					display: inline;
+					width: auto;
+					height: auto;
+					border: none;
+					margin: 0;
+					padding: 0;
+					text-align: left;
+					float: none;
+
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+			}
+		}
+
+		.details {
+			width: 33%;
 		}
 	}
 	

@@ -95,7 +95,8 @@
 				return {
 					lvl: r.level,
 					clr: COLORS_LVL[r.level],
-					nrg: r.energy / RESO_NRG[r.level] * 100
+					nrg: r.energy / RESO_NRG[r.level] * 100,
+					owner: r.owner
 				};
 			})
 			.sort(function (a, b) {
@@ -106,7 +107,10 @@
 				return "";
 			}
 
-			return [ m.rarity, m.name ].join(" ").toLowerCase().replace(/[\s_]+/g, "-");
+			return {
+				type: [ m.rarity, m.name ].join(" ").toLowerCase().replace(/[\s_]+/g, "-"),
+				owner: m.owner
+			};
 		});
 		info.links = window.getPortalLinks(data.guid).out.length;
 		info.maxLinks = window.getMaxOutgoingLinks(data.portalDetails);
@@ -175,6 +179,7 @@
 			var container = getPortalQuickview();
 
 			populateCollapsedView(p, container.find(".collapsed-info"));
+			populateExpandedView(p, container.find(".expanded-info"));
 
 			setTimeout(function () {
 				$("body").addClass("portalquickview-open");
@@ -208,7 +213,7 @@
 			}));
 
 		var mods = d("mods").append(p.mods.map(function (m) {
-			return d("mod").addClass(m);
+			return d("mod").addClass(m.type);
 		}));
 
 		d("health")
@@ -226,5 +231,27 @@
 					.append(s("of").text(p.maxLinks))
 			)
 			.appendTo(qv);
+	}
+
+	function populateExpandedView(p, qv) {
+		qv.empty();
+
+		d("resonators")
+		.append(p.reso.map(function (r) {
+			return d("reso")
+			.append(s("energy").append(
+				s("level").width(r.nrg + "%").css("background-color", r.clr)
+			))
+			.append(
+				s("owner").text(r.owner)
+			);
+		}))
+		.appendTo(qv);
+
+		d("mods")
+		.append(p.mods.map(function (m) {
+			return d("mod").text(m.owner).addClass(m.type);
+		}))
+		.appendTo(qv);
 	}
 }());

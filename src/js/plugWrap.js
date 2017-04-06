@@ -13,8 +13,6 @@ if (window.plugin === undefined) {
 }
 window.plugin.minSkin = { hooks: [], components: [] };
 
-%%HELPERS%%
-
 %%HOOKS%%
 
 (function() {

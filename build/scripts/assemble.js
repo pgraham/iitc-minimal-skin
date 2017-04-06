@@ -13,7 +13,7 @@ const readDir = require("util/readDir");
 
 const getEmbeddedImageStyles = require("assembly/getEmbeddedImageStyles");
 
-console.log("     - Populating iitc plugin wrapper with sources");
+console.log("  - Populating iitc plugin wrapper with sources");
 readFile("src/js/plugWrap.js")
 .then((plugCtnt) => {
 
@@ -22,6 +22,7 @@ readFile("src/js/plugWrap.js")
 
 	let jobs = [];
 
+	console.log("    - Embedding CSS bundle");
 	jobs.push(
 		readFile("build/target/work/bundle.css")
 		.then(cssCtnt => {
@@ -29,13 +30,7 @@ readFile("src/js/plugWrap.js")
 		})
 	);
 
-	jobs.push(
-		readFile("build/target/work/helpers.js")
-		.then(helpers => {
-			plugCtnt = plugCtnt.replace("%%HELPERS%%", helpers);
-		})
-	);
-
+	console.log("    - Embedding Javascript bundle");
 	jobs.push(
 		readFile("build/target/work/hooks.js")
 		.then(hooks => {
@@ -43,6 +38,7 @@ readFile("src/js/plugWrap.js")
 		})
 	);
 
+	console.log("    - Embedding image styles");
 	jobs.push(
 		getEmbeddedImageStyles()
 		.then(embed => {

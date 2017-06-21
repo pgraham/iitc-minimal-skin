@@ -6,7 +6,7 @@
 
 exports.distance = function (length) {
 	if (length > 1000) {
-		return (length / 1000) + "km";
+		return Math.floor(length / 1000) + "km";
 	}
 	return length + "m";
 };

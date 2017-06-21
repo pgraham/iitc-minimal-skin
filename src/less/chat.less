@@ -1,8 +1,18 @@
 .minimal-skin {
 
+	.game-log.expanded {
+		top: 0;
+	}
+
 	&.portalquickview-open {
 		.game-log.expanded {
 			top: 3em;
+		}
+
+		&.portalquickview-expanded {
+			.game-log.expanded {
+				top: 11em;
+			}
 		}
 	}
 
@@ -17,10 +27,6 @@
 
 		top: ~"calc(100% - 7.5em)";
 		transition: top 0.5s, transform 0.5s;
-
-		&.expanded {
-			top: 0;
-		}
 
 		#chatcontrols .close-btn {
 			width: 2em;

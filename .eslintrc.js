@@ -8,10 +8,17 @@ module.exports = {
 		"require": true,
 		"android": false,
 		"map": false,
+		"digits": false,
 		"getDataZoomForMapZoom": false,
 		"getMapZoomTileParameters": false,
 		"COLORS_LVL": false,
-		"RESO_NRG": false
+		"RESO_NRG": false,
+		"PLAYER": false,
+		"TEAM_ENL": false,
+		"TEAM_RES": false,
+		"teamStringToId": false,
+		"getPortalFieldsCount": false,
+		"getPortalLinksCount": false
 	},
 	"parserOptions": {
 		"ecmaVersion": 6,

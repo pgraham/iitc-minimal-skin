@@ -4,7 +4,7 @@
  */
 "use strict";
 
-import lookup from "util/lookup";
+import getTeamCode from "util/getTeamCode";
 import { d } from "util/dom/el";
 
 import { populateCollapsedView } from "view/qv/collapsedInfo";
@@ -35,12 +35,13 @@ function getPortalInfo(data) {
 	info.lvl = data.portalDetails.level;
 	info.owner = {
 		name: data.portalDetails.owner,
-		team: lookup(data.portalDetails.team, {
-			"E": "enl",
-			"R": "res",
-			"N": "none"
-		}, "none")
+		team: getTeamCode(data.portalDetails.team)
 	};
+	info.isFriendly = (
+		getTeamCode(PLAYER.team) === getTeamCode(data.portalDetails.team)
+	);
+	info.isCaptured = getTeamCode(data.portalDetails.team) !== "none";
+
 	info.reso = data.portalDetails.resonators
 		.map(function (r) {
 			return {
@@ -66,6 +67,16 @@ function getPortalInfo(data) {
 	info.links = window.getPortalLinks(data.guid).out.length;
 	info.maxLinks = window.getMaxOutgoingLinks(data.portalDetails);
 	info.range = window.getPortalRange(data.portalDetails);
+	info.mitigation = window.getPortalMitigationDetails(
+		data.portalDetails,
+		window.getPortalLinksCount(data.guid)
+	);
+
+	info.ap = window.getAttackApGain(
+		data.portalDetails,
+		numFields,
+		numLinks
+	);
 
 	return info;
 }

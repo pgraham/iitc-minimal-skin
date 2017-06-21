@@ -92,6 +92,36 @@
 		.details {
 			width: 0;
 			transition: width 0.5s;
+
+			.ap, .shields {
+				background-position: left center;
+				padding-left: 1.5em;
+			}
+
+			.ap {
+				span {
+					margin-right: 1em;
+				}
+			}
+
+			.shields {
+				height: 1em;
+				width: 30%;
+				white-space: nowrap;
+
+				.active, .excess {
+					display: inline-block;
+					height: 100%;
+				}
+
+				.active {
+					background-color: @rooster-comb;
+				}
+
+				.excess {
+					background-color: @barn-red;
+				}
+			}
 		}
 
 		.health {

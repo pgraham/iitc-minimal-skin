@@ -1,9 +1,9 @@
+/* eslint-env node, es6 */
 /**
  * Build CSS styles for embedded images.
  */
 "use strict";
 
-const fs = require("fs");
 const path = require("path");
 
 const listDir = require("util/listDir");
@@ -14,7 +14,7 @@ function buildCssRule(cls, type, b64) {
 .${cls} {
 	background-image: url(data:image/${type};base64,${b64});
 }
-`
+`;
 }
 
 module.exports = function () {

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint-env node, es6 */
+/* eslint no-console: "off" */
 /**
  * Assemble the grease monkey script into a single file.
  */
@@ -8,10 +10,9 @@ const pkg = require("../../package.json");
 
 const readFile = require("util/readFile");
 const writeFile = require("util/writeFile");
-const listDir = require("util/listDir");
-const readDir = require("util/readDir");
 
 const getEmbeddedImageStyles = require("assembly/getEmbeddedImageStyles");
+const getEmbeddedSvgIconStyles = require("assembly/getEmbeddedSvgIconStyles");
 
 console.log("  - Populating iitc plugin wrapper with sources");
 readFile("src/js/plugWrap.js")
@@ -43,6 +44,14 @@ readFile("src/js/plugWrap.js")
 		getEmbeddedImageStyles()
 		.then(embed => {
 			plugCtnt = plugCtnt.replace("%%IMG_EMBED%%", embed);
+		})
+	);
+
+	console.log("    - Embedding SVG icon styles");
+	jobs.push(
+		getEmbeddedSvgIconStyles()
+		.then(embed => {
+			plugCtnt = plugCtnt.replace("%%SVG_EMBED%%", embed);
 		})
 	);
 

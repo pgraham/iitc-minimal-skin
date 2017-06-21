@@ -49,9 +49,13 @@ window.plugin.minSkin = { hooks: [], components: [] };
 		// breakpoints.
 		console.log("Initializing minimal skin");
 
+		// Hide the sidebar by default
+		$("#sidebartoggle").click();
+
 		$("body").addClass("minimal-skin");
 		addStyle(getIITCSkinCss);
 		addStyle(getEmbeddedImageStyles);
+		addStyle(getEmbeddedSvgIconStyles);
 		installHooks();
 		initComponents();
 	}
@@ -76,5 +80,11 @@ function getIITCSkinCss() {
 function getEmbeddedImageStyles() {
 	return `
 %%IMG_EMBED%%
+`;
+}
+
+function getEmbeddedSvgIconStyles() {
+	return `
+%%SVG_EMBED%%
 `;
 }

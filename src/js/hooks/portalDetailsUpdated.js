@@ -21,10 +21,20 @@ window.plugin.minSkin.hooks.push({
 		populateCollapsedView(p, container.find(".collapsed-info"));
 		populateExpandedView(p, container.find(".expanded-info"));
 
-		setTimeout(function () {
-			$("body").addClass("portalquickview-open");
-			container.removeClass("hide");
-		});
+		if (container.data("portal-id") !== data.guid) {
+			// Only force the quickview open if this is a new portal
+
+			// TODO Hook into IITC to be able to determine if this is a polling
+			// refresh of a user initiated click.
+			setTimeout(function () {
+				$("body").addClass("portalquickview-open");
+				if (container.is(".expanded")) {
+					$("body").addClass("portalquickview-expanded");
+				}
+				container.removeClass("hide");
+			});
+		}
+		container.data("portal-id", data.guid);
 	}
 });
 

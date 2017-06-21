@@ -3,10 +3,14 @@
  */
 "use strict";
 
+import expandedDetails from "view/qv/expandedDetails";
+
 import { d, s } from "util/dom/el";
 
 export function populateExpandedView(p, qv) {
 	qv.empty();
+
+	d("image").css("background-image", `url(${p.img})`).appendTo(qv);
 
 	d("resonators")
 	.append(p.reso.map(function (r) {
@@ -26,6 +30,5 @@ export function populateExpandedView(p, qv) {
 	}))
 	.appendTo(qv);
 
-	d("details")
-	.appendTo(qv);
+	expandedDetails.build(p).appendTo(qv);
 }

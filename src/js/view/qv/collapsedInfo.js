@@ -73,12 +73,12 @@ export function populateCollapsedView(p, qv) {
 
 	d("links")
 		.addClass(p.reso.length === 8 ? "linkable" : "")
-		.append(buildLinksImg(p.links, p.reso.length))
+		.append(buildLinksImg(p.links.out, p.reso.length))
 		.append(
 			d("num-out")
-				.append(s("out").text(p.links))
+				.append(s("out").text(p.links.out))
 				.append(s("divider").text("/"))
-				.append(s("of").text(p.maxLinks))
+				.append(s("of").text(p.links.max))
 		)
 		.appendTo(qv);
 }

@@ -31,8 +31,13 @@ window.plugin.minSkin.hooks.push({
 function getPortalInfo(data) {
 	var info = {};
 
+	let numFields = window.getPortalFieldsCount(data.guid);
+	let numLinks = window.getPortalLinksCount(data.guid);
+
 	info.name = data.portalDetails.title;
+	info.img = window.fixPortalImageUrl(data.portalDetails.image);
 	info.lvl = data.portalDetails.level;
+	info.teamId = teamStringToId(data.team);
 	info.owner = {
 		name: data.portalDetails.owner,
 		team: getTeamCode(data.portalDetails.team)
@@ -64,8 +69,16 @@ function getPortalInfo(data) {
 			owner: m.owner
 		};
 	});
-	info.links = window.getPortalLinks(data.guid).out.length;
-	info.maxLinks = window.getMaxOutgoingLinks(data.portalDetails);
+
+	let linkInfo = window.getPortalLinks(data.guid);
+	info.links = {
+		out: linkInfo.out.length,
+		in: linkInfo.in.length,
+		max: window.getMaxOutgoingLinks(data.portalDetails),
+		total: numLinks,
+		fields: numFields,
+		info: linkInfo
+	};
 	info.range = window.getPortalRange(data.portalDetails);
 	info.mitigation = window.getPortalMitigationDetails(
 		data.portalDetails,
@@ -77,6 +90,20 @@ function getPortalInfo(data) {
 		numFields,
 		numLinks
 	);
+
+	info.hacks = window.getPortalHackDetails(data.portalDetails);
+
+	info.nrg = {
+		current: window.getCurrentPortalEnergy(data.portalDetails),
+		total: window.getTotalPortalEnergy(data.portalDetails)
+	};
+
+	let attackInfo = window.getPortalAttackValues(data.portalDetails);
+	info.attack = {
+		freq: attackInfo.attack_frequency,
+		hit: attackInfo.hit_bonus,
+		force: attackInfo.force_amplifier
+	};
 
 	return info;
 }

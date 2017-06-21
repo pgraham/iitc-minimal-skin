@@ -254,7 +254,20 @@
 	}
 
 	.expanded-info {
-		padding: 0 1em 0.5em;
+		padding: 0 0.5em 0.5em;
+
+		.image {
+			width: 16%;
+			height: 100%;
+			opacity: 0.5;
+
+			padding-right: 0.5em;
+
+			background-size: contain;
+			background-position: left top;
+			background-repeat: no-repeat;
+			background-origin: content-box;
+		}
 
 		.resonators {
 			box-sizing: border-box;
@@ -321,7 +334,47 @@
 		}
 
 		.details {
-			width: 33%;
+			position: relative;
+			width: 18%;
+
+			font-size: 0.8em;
+			text-align: right;
+
+			> div {
+				padding-right: 1.5em;
+				background-position: right center;
+				margin-top: 2px;
+			}
+
+			.attack {
+				display: table;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				padding-right: 0;
+
+				font-size: 0.9em;
+				text-align: left;
+
+				&:before {
+					content: "attack";
+					display: table-caption;
+					text-align: center;
+					font-size: 0.8em;
+					font-weight: 700;
+					text-transform: uppercase;
+				}
+
+				div {
+					display: table-row;
+				}
+
+				span {
+					display: table-cell;
+				}
+			}
 		}
 	}
 	

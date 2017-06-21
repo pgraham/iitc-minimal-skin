@@ -1,6 +1,6 @@
 {
   "name": "iitc-minimal-skin-plugin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Minimal skin for IITC desktop",
   "main": "index.js",
   "scripts": {

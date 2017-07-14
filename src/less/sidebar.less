@@ -1,62 +1,13 @@
 #sidebartoggle {
 	opacity: 0.1;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#scrollwrapper {
+	bottom: auto;
+	top: 50%;
+	transform: translateY(-50%);
 }
 #sidebar {
 	background-color: rgba(8, 48, 78, 0.7);
-}
-#portaldetails {
-	display: flex;
-	flex-direction: column;
-	color: #FFF;
-
-	.title {
-		height: calc(4em + 1px);
-		padding: 0.1em 0 0 4.3em;
-		width: auto;
-		font-size: 14px;
-		border-bottom: 1px solid #AAA;
-	}
-
-	.close {
-		top: 0;
-		right: 0;
-		padding: 0.2em;
-	}
-	
-
-	.imgpreview {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 4em;
-		height: 4em;
-		background-size: cover;
-		background-position: left;
-	}
-
-	.mods {
-		display: flex;
-		justify-content: space-between;
-
-		.container {
-			width: 2.5em;
-			height: 2.5em;
-			padding: 0.5em;
-		}
-
-		.mod {
-			background-size: contain;
-			background-position: center;
-			width: 100%;
-			height: 100%;
-		}
-	}
-}
-
-#level {
-	font-size: 1.5em;
-	padding: 0 0.2em;
-	margin: 0;
-	text-align: left;
-	float: none;
 }

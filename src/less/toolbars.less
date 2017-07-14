@@ -1,0 +1,28 @@
+.minimal-skin .leaflet-control-container {
+
+	.leaflet-right .leaflet-control.minskin-control {
+		height: 6em;
+		margin: 0;
+	}
+
+	.leaflet-minskin-toggle {
+		@border: 1px solid #CCC;
+
+		width: 3em;
+		height: 3em;
+		background-color: rgba(255, 255, 255, 0.75);
+		border-left: @border;
+		border-bottom: @border;
+		border-bottom-left-radius: 0.25em;
+	}
+
+	.minskin-control {
+		.minskin-general-info {
+			width: 0;
+		}
+
+		&.open .minskin-general-info {
+			width: calc(100% - 550px);
+		}
+	}
+}

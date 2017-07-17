@@ -9,7 +9,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 550px;
+	width: @quickview-width;
 	height: @collapsed-height;
 	z-index: 1000;
 
@@ -385,9 +385,11 @@
 	.actions {
 		position: absolute;
 		top: 0;
-		right: -1.5em;
+		right: -1 * @quickview-actions-width;
+		width: @quickview-actions-width;
+		text-align: center;
 
-		padding: 0.1em 0.25em;
+		padding: 0.1em 0;
 		border-bottom-right-radius: 1em;
 
 		color: @body-text--weak;

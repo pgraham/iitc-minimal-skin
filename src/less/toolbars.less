@@ -1,5 +1,7 @@
 .minimal-skin .leaflet-control-container {
 
+	@toggle-size: 3em;
+
 	.leaflet-right .leaflet-control.minskin-control {
 		height: 6em;
 		margin: 0;
@@ -8,21 +10,37 @@
 	.leaflet-minskin-toggle {
 		@border: 1px solid #CCC;
 
-		width: 3em;
-		height: 3em;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: @toggle-size;
+		height: @toggle-size;
 		background-color: rgba(255, 255, 255, 0.75);
 		border-left: @border;
 		border-bottom: @border;
 		border-bottom-left-radius: 0.25em;
+
+		cursor: pointer;
 	}
 
 	.minskin-control {
+		font-size: 1rem;
+
 		.minskin-general-info {
+			position: absolute;
+			top: 0;
+			right: @toggle-size;
+			height: @toggle-size;
 			width: 0;
+
+			.bg-colour-primary;
+			border-bottom-left-radius: 0.4em;
+
+			transition: width @animation-duration;
 		}
 
 		&.open .minskin-general-info {
-			width: calc(100% - 550px);
+			width: calc(~"100vw - @{quickview-width} - @{quickview-actions-width} - @{toggle-size} - 0.5em");
 		}
 	}
 }

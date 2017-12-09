@@ -14,9 +14,6 @@
 	z-index: 1000;
 
 	.bg-colour-primary;
-	border-bottom-left-radius: 1em;
-	border-bottom-right-radius: 0.4em;
-
 	color: @body-text--default;
 
 	transition: transform 0.5s, height 0.5s;
@@ -410,12 +407,13 @@
 	.actions {
 		position: absolute;
 		top: 0;
+		bottom: 0;
 		right: -1 * @quickview-actions-width;
 		width: @quickview-actions-width;
 		text-align: center;
 
 		padding: 0.1em 0;
-		border-bottom-right-radius: 1em;
+		border-bottom-right-radius: 0.5em;
 
 		color: @body-text--weak;
 		.bg-colour-primary;

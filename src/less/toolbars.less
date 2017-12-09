@@ -1,46 +1,53 @@
-.minimal-skin .leaflet-control-container {
-
+.minimal-skin {
 	@toggle-size: 3em;
 
-	.leaflet-right .leaflet-control.minskin-control {
-		height: 6em;
+	/* Need the long rule to be more specific than rule in leafletControls.less */
+	.leaflet-control-container .leaflet-right .leaflet-control.minskin-control {
 		margin: 0;
-	}
-
-	.leaflet-minskin-toggle {
-		@border: 1px solid #CCC;
-
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: @toggle-size;
-		height: @toggle-size;
-		background-color: rgba(255, 255, 255, 0.75);
-		border-left: @border;
-		border-bottom: @border;
-		border-bottom-left-radius: 0.25em;
-
-		cursor: pointer;
+		float: none;
 	}
 
 	.minskin-control {
-		font-size: 1rem;
+
+		.minskin-toggle {
+			@border: 1px solid #CCC;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: @toggle-size;
+			height: @toggle-size;
+			background-color: rgba(255, 255, 255, 0.75);
+			border-left: @border;
+			border-bottom: @border;
+			border-bottom-left-radius: 0.25em;
+
+			cursor: pointer;
+		}
 
 		.minskin-general-info {
 			position: absolute;
 			top: 0;
 			right: @toggle-size;
-			height: @toggle-size;
 			width: 0;
+			height: @toggle-size;
+			overflow: hidden;
+			display: flex;
 
 			.bg-colour-primary;
-			border-bottom-left-radius: 0.4em;
 
 			transition: width @animation-duration;
-		}
 
-		&.open .minskin-general-info {
-			width: calc(~"100vw - @{quickview-width} - @{quickview-actions-width} - @{toggle-size} - 0.5em");
+			&.open {
+				width: calc(~"100vw - @{quickview-width} - @{quickview-actions-width} - @{toggle-size} - 3px");
+
+			}
 		}
+	}
+
+	.iitc-controls {
+		position: absolute;
+		top: @toggle-size * 2;
+		right: 0;
 	}
 }

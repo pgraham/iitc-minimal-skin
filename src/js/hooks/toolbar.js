@@ -1,25 +1,27 @@
 /**
  * Consolidate tools into a single bar.
  */
+import { buildPlayerInfo } from "view/infobar/playerInfo";
+import {d } from "util/dom/el";
+
 const topRightSel = ".leaflet-top.leaflet-right";
 const topLeftSel = ".leaflet-top.leaflet-left";
 const bottomRightSel = ".leaflet-bottom.leaflet-right";
 
 function buildMinSkinControl() {
-	let control = $("<div/>").addClass("leaflet-control minskin-control");
+	let control = d("minskin-control leaflet-control");
 
-	$("<div/>")
-		.addClass("minskin-general-info")
-		.appendTo(control);
+	let container = d("minskin-general-info").appendTo(control);
+	buildPlayerInfo().appendTo(container);
+	// buildScores().appendTo(container);
+	// buildInputs().appendTo(container);
+	// buildActions().appendTo(container);
 
-	$("<div/>")
-		.addClass("icon icon-ingress leaflet-minskin-toggle")
+	d("icon icon-ingress minskin-toggle")
 		.appendTo(control)
 		.click(() => {
-			control.toggleClass("open");
+			container.toggleClass("open");
 		});
-
-	control.append();
 
 	return control;
 }

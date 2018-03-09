@@ -12,6 +12,10 @@ exports.distance = function (length) {
 };
 
 exports.percent = function (pct) {
+	if (isNaN(pct)) {
+		return "-";
+	}
+
 	pct = pct || 0;
 	if (pct < 0) {
 		pct = 0;

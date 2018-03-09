@@ -17,4 +17,26 @@
 		}
 	}
 
+	.player-status {
+		.xm-level, .ap-level {
+			line-height: 1em;
+			font-size: 0.7em;
+
+			.lbl {
+				display: inline-block;
+				width: 2em;
+
+				&:after {
+					content: ':';
+				}
+			}
+
+			.bar {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+			}
+		}
+	}
 }

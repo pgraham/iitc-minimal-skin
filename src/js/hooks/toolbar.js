@@ -47,6 +47,9 @@ window.plugin.minSkin.components.push({
 		topRight.children().detach().appendTo(iitcCtrls);
 		topLeft.children().detach().appendTo(iitcCtrls);
 
+		// Hide map attribution, is this sketchy?
+		bottomRight.find('.leaflet-control-attribution').remove();
+
 		// Add minskin controls toggle and existing IITC controls to top right.
 		topRight.append(buildMinSkinControl());
 		topRight.append(iitcCtrls);

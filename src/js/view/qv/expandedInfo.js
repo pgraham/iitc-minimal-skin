@@ -5,12 +5,31 @@
 
 import expandedDetails from "view/qv/expandedDetails";
 
-import { d, s } from "util/dom/el";
+import { d, s, el } from "util/dom/el";
+
+function openLightbox(url) {
+	const lb = d("lightbox")
+		.click(() => lb.remove())
+		.append(el("img").attr("src", url))
+		.append(
+			el("button")
+			.text("✕")
+			.click(e => {
+				e.preventDefault();
+				lb.remove();
+			})
+		).appendTo("body");
+}
 
 export function populateExpandedView(p, qv) {
 	qv.empty();
 
-	d("image").css("background-image", `url(${p.img})`).appendTo(qv);
+	d("image")
+		.css("background-image", `url(${p.img})`)
+		.click(() => {
+			openLightbox(p.img);
+		})
+		.appendTo(qv);
 
 	d("resonators")
 	.append(p.reso.map(function (r) {

@@ -1,0 +1,40 @@
+.lightbox {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+
+	.bg-transparent(@mono-lighter, 0.3);
+
+	img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		padding: 0.5em;
+		border: 1px solid @barn-red;
+		border-radius: 0.25em;
+	}
+
+	button {
+		position: absolute;
+		top: 3rem;
+		right: 6rem;
+
+		margin: 0;
+		padding: 0 0.1em;
+		border: none;
+		border-radius: 0.1em;
+		background: none;
+
+		font-size: 4em;
+		line-height: 1em;
+		color: @mono-dark;
+
+		&:hover {
+			.bg-transparent(@mono-light, 0.5);
+		}
+	}
+}

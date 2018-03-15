@@ -9,6 +9,7 @@ import { d } from "util/dom/el";
 
 import { populateCollapsedView } from "view/qv/collapsedInfo";
 import { populateExpandedView } from "view/qv/expandedInfo";
+import { populateActions } from "view/qv/actions";
 
 window.plugin.minSkin.hooks.push({
 	event: "portalDetailsUpdated",
@@ -20,6 +21,7 @@ window.plugin.minSkin.hooks.push({
 
 		populateCollapsedView(p, container.find(".collapsed-info"));
 		populateExpandedView(p, container.find(".expanded-info"));
+		populateActions(p, container.find(".portal-actions"));
 
 		if (container.data("portal-id") !== data.guid) {
 			// Only force the quickview open if this is a new portal
@@ -115,6 +117,11 @@ function getPortalInfo(data) {
 		force: attackInfo.force_amplifier
 	};
 
+	// Position info
+	info.lat = data.portalData.latE6 / 1e6;
+	info.lng = data.portalData.lngE6 / 1e6;
+	info.latlng = `${info.lat},${info.lng}`;
+
 	return info;
 }
 
@@ -151,6 +158,8 @@ function getPortalQuickview() {
 				}
 			})
 			.appendTo(actions);
+
+		d("portal-actions").appendTo(actions);
 	}
 	return qv;
 }

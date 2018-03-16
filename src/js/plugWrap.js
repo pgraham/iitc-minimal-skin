@@ -52,6 +52,9 @@ window.plugin.minSkin = { hooks: [], components: [] };
 		// Hide the sidebar by default
 		$("#sidebartoggle").click();
 
+		// Lower the wait time for refreshing when panning the map
+		window.mapDataRequest.MOVE_REFRESH = 1;
+
 		$("body").addClass("minimal-skin");
 		addStyle(getIITCSkinCss);
 		addStyle(getEmbeddedImageStyles);

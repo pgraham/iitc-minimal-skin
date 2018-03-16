@@ -1,0 +1,166 @@
+#portal-quickview {
+
+	&.expanded {
+		height: @qv-height;
+
+		.collapsed-info {
+			.health {
+				width: 0;
+			}
+
+			.details {
+				width: 40%;
+			}
+		}
+
+		.expanded-info {
+			height: @qv-expanded-height;
+		}
+	}
+
+	.expanded-info {
+		display: flex;
+		height: 0;
+		transition: height 0.5s;
+		overflow: hidden;
+		padding: 0 0.5em 0.5em;
+
+		.image {
+			width: 16%;
+			height: 100%;
+			opacity: 0.5;
+
+			padding-right: 0.5em;
+
+			background-size: contain;
+			background-position: left top;
+			background-repeat: no-repeat;
+			background-origin: content-box;
+		}
+
+		.resonators {
+			box-sizing: border-box;
+			width: 33%;
+
+			.reso {
+				height: 100% / 8;
+
+				.energy {
+					display: inline-block;
+					width: 25%;
+					height: 100%;
+					background-color: @mono-lighter;
+
+					.level {
+						display: inline-block;
+						height: 100%;
+					}
+				}
+
+				.owner {
+					display: inline-block;
+					height: 100%;
+					vertical-align: top;
+
+					font-size: 0.8em;
+					padding-left: 1em;
+				}
+			}
+		}
+
+		.mods {
+			width: 33%;
+			margin: 0;
+			height: auto;
+			text-align: left;
+
+			.mod {
+				height: 25%;
+				display: flex;
+				align-items: center;
+				padding-left: 3em;
+
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: 2px;
+
+				&[class*=" common-"] {
+					border-left: 1px solid @common;
+				}
+
+				&[class*=" rare-"] {
+					border-left: 1px solid @rare;
+				}
+
+				&[class*=" very-rare-"] {
+					border-left: 1px solid @very-rare;
+				}
+
+				.owner {
+					cursor: default;
+					background: none;
+					display: inline;
+					width: auto;
+					height: auto;
+					border: none;
+					margin: 0;
+					padding: 0;
+					text-align: left;
+					float: none;
+
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+			}
+		}
+
+		.details {
+			position: relative;
+			width: 18%;
+
+			font-size: 0.8em;
+			text-align: right;
+
+			> div {
+				padding-right: 1.5em;
+				background-position: right center;
+				margin-top: 2px;
+
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.attack {
+				display: table;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				padding-right: 0;
+
+				font-size: 0.9em;
+				text-align: left;
+
+				&:before {
+					content: "attack";
+					display: table-caption;
+					text-align: center;
+					font-size: 0.8em;
+					font-weight: 700;
+					text-transform: uppercase;
+				}
+
+				div {
+					display: table-row;
+				}
+
+				span {
+					display: table-cell;
+				}
+			}
+		}
+	}
+}

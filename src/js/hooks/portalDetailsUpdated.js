@@ -71,13 +71,19 @@ function getPortalInfo(data) {
 		.sort(function (a, b) {
 			return b.lvl - a.lvl;
 		});
+
 	info.mods = data.portalDetails.mods.map(function (m) {
 		if (m === null) {
 			return "";
 		}
 
+		let modType = [ m.rarity, m.name ].join(" ").toLowerCase();
+		modType = modType.replace(/[\s_]+/g, "-");
+		modType = modType.replace(/\(-\)$/, "minus");
+		modType = modType.replace(/\(\+\)$/, "plus");
+
 		return {
-			type: [ m.rarity, m.name ].join(" ").toLowerCase().replace(/[\s_]+/g, "-"),
+			type: modType,
 			owner: m.owner
 		};
 	});

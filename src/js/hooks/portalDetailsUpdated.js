@@ -5,7 +5,7 @@
 "use strict";
 
 import getTeamCode from "util/getTeamCode";
-import { d } from "util/dom/el";
+import { d, el } from "util/dom/el";
 
 import { populateCollapsedView } from "view/qv/collapsedInfo";
 import { populateExpandedView } from "view/qv/expandedInfo";
@@ -142,25 +142,25 @@ function getPortalQuickview() {
 			.appendTo('body');
 
 		var actions = d("actions").appendTo(qv);
-		d("close")
-			.text("✕")
+		el("button", "close")
+			.addClass("icon icon-close")
 			.click(function () {
 				$("body").removeClass("portalquickview-open portalquickview-expanded");
 				qv.addClass("hide");
 			})
 			.appendTo(actions);
 
-		d("expand")
-			.text("▼")
+		el("button", "expand")
+			.addClass("icon icon-arrow-drop-down")
 			.click(function () {
 				if (qv.is(".expanded")) {
 					$("body").removeClass("portalquickview-expanded");
 					qv.removeClass("expanded");
-					$(this).text("▼");
+					$(this).removeClass("icon-arrow-drop-up").addClass("icon-arrow-drop-down");
 				} else {
 					$("body").addClass("portalquickview-expanded");
 					qv.addClass("expanded");
-					$(this).text("▲");
+					$(this).removeClass("icon-arrow-drop-down").addClass("icon-arrow-drop-up");
 				}
 			})
 			.appendTo(actions);

@@ -13,23 +13,34 @@
 		color: @body-text--default;
 		.bg-colour-primary;
 
+		button {
+			width: 1.1em;
+			height: 1.2em;
+			display: block;
+			margin: 0 auto;
+		}
+
 		.close, .expand {
 			cursor: pointer;
 		}
 
 		.close {
-			margin-bottom: 0.1em;
+			margin-bottom: 0.2em;
 		}
 	}
 
 	.portal-actions {
+		position: absolute;
+		top: 3em;
+		right: 0;
 		height: 0;
+		width: @qv-actions-width;
 		transition: height 0.5s;
 		overflow: hidden;
-		padding-top: 0.6em;
+		padding-top: 0.35em;
 
 		button {
-			height: 1.8em;
+			height: 1.45em;
 		}
 	}
 

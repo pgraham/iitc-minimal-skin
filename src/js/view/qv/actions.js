@@ -10,7 +10,7 @@ function buildLinkButton(p) {
 	let mapsUrl = `https://www.google.com/maps?saddr=My+Location&daddr=${p.latlng}`;
 
 	let pUrls;
-	let pUrlsBtn = el("button").text("🔗");
+	let pUrlsBtn = el("button").addClass("icon icon-generate-link");
 
 	function removePUrls() {
 		if (pUrls.is(".leaving")) {
@@ -52,7 +52,7 @@ function buildLinkButton(p) {
 						window.open(mapsUrl, "_blank");
 					})
 				)
-				.append(el("button").text("✕").click(() => {
+				.append(el("button").addClass("icon icon-close").click(() => {
 					removePUrls();
 				}))
 				.appendTo("body");

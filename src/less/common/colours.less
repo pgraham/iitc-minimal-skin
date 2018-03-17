@@ -43,42 +43,6 @@
 
 /*
  * ---------------------------------------------------------------------------
- *  Background colours. All elements have transparency applied to their
- *  backgrounds so that the map is visible underneath.
- * ---------------------------------------------------------------------------
- */
-
-/*
- * Primary background colour.
- * Use the `.bg-colour-primary` mixin to apply.
- */
-@bg-colour-primary: @light-pink;
-@bg-alpha-primary: 0.7;
-
-@bg-colour-primary-alpha: rgba(
-	red(@bg-colour-primary),
-	green(@bg-colour-primary),
-	blue(@bg-colour-primary),
-	@bg-alpha-primary
-);
-.bg-colour-primary {
-	.bg-transparent(@bg-colour-primary, @bg-alpha-primary);
-}
-
-/*
- * ---------------------------------------------------------------------------
- *  Text:
- *  All text (that is not affliated with a faction) and accents (borders,
- *  underlines, etc.) is drawn with a greyscale colour.
- * ---------------------------------------------------------------------------
- */
-
-@body-text--default: @mono-dark;
-@body-text--weak: @mono-light;
-@accent: @mono-lighter;
-
-/*
- * ---------------------------------------------------------------------------
  *  Game element colours.
  * ---------------------------------------------------------------------------
  */
@@ -87,16 +51,3 @@
 @link--on: @bright-blue;
 @link--off: @dull-blue;
 
-/*
- * ---------------------------------------------------------------------------
- *  Misc.
- * ---------------------------------------------------------------------------
- */
-
-/*
- * Given a colour value and an alpha value, apply the appropriate
- * `background-color` declaration.
- */
-.bg-transparent(@colour, @alpha) {
-	background-color: rgba(red(@colour), green(@colour), blue(@colour), @alpha);
-}
